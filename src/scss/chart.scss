@@ -13,4 +13,32 @@
 
 .measure {
     width: 20%;
+    position: relative;
+
+    .delete-measure-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        
+    }
+}
+
+.chart-editor-wrapper {
+    .editor-input {
+        display: block;
+        margin: 10px 0 10px 0;
+    }
+}
+
+.app-button {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border-style: hidden;
+
+    &:hover {
+        cursor: pointer;
+        background-color: peru;
+    }
 }
