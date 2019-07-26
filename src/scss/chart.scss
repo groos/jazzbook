@@ -1,26 +1,29 @@
-
-
-.simple-border {
-    border: 1px solid grey;
-    padding: 10px;
-}
-
 .chart-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-}
 
-.measure {
-    width: 20%;
-    position: relative;
+    .measure {
+        width: 20%;
+        position: relative;
 
-    .delete-measure-button {
-        position: absolute;
-        top: 0;
-        right: 0;
-
-        
+        .chord-display {
+            padding-left: 10px;
+        }
+    
+        .delete-measure-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    
+        .arpeggio-display {
+            margin: 10px 0 10px 0;
+        }
+    
+        .arpeggio-note:not(:last-child) {
+            margin: 0 10px 0 0;
+        }
     }
 }
 
@@ -28,17 +31,5 @@
     .editor-input {
         display: block;
         margin: 10px 0 10px 0;
-    }
-}
-
-.app-button {
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border-style: hidden;
-
-    &:hover {
-        cursor: pointer;
-        background-color: peru;
     }
 }

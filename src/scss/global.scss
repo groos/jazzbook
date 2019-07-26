@@ -1,0 +1,16 @@
+.simple-border {
+    border: 1px solid grey;
+    padding: 10px;
+}
+
+.app-button {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border-style: hidden;
+
+    &:hover {
+        cursor: pointer;
+        background-color: peru;
+    }
+}

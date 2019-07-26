@@ -9,7 +9,8 @@ class JazzBook extends React.Component {
         super(props);
 
         this.state = {
-            measures: testMeasures
+            measures: testMeasures,
+            beatsPerMeasure: 4
         };
 
         this.appendMeasure = this.appendMeasure.bind(this);

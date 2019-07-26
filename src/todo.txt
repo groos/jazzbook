@@ -1,0 +1,1 @@
+- set chord type to be select dropdown
