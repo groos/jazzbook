@@ -1,14 +1,12 @@
 import React from 'react';
 
-class Measure extends React.Component {
-    render() {
-        return <div className="measure simple-border">
-            <div className="chord-name">
-                <h4>measure</h4>
-                <h5>{this.props.measure.note}</h5>
-            </div>
+export default (props) => {
+    return <div className="measure simple-border">
+        <h5>Measure</h5>
+        <button onClick={() => props.deleteMeasure(props.index)}>X</button>
+        <div className="chord-display">
+            <span>{props.measure.note}</span>
+            <span>{props.measure.chordType}</span>
         </div>
-    };
+    </div>
 }
-
-export default Measure;
