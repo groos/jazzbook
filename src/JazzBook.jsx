@@ -12,11 +12,18 @@ class JazzBook extends React.Component {
         this.state = {
             measures: testMeasures,
             beatsPerMeasure: defaultValues.beatsPerMeasure,
-            beatsPerMinute: defaultValues.beatsPerMinute
+            beatsPerMinute: defaultValues.beatsPerMinute,
+            activeMeasure: 0
         };
 
         this.appendMeasure = this.appendMeasure.bind(this);
         this.deleteMeasure = this.deleteMeasure.bind(this);
+    }
+
+    updateActiveMeasure = (measure) => {
+        this.setState({
+            activeMeasure: measure
+        });
     }
 
     appendMeasure = (note, chordType, beats) => {
@@ -40,8 +47,8 @@ class JazzBook extends React.Component {
     render() {
         return <div>
             <h3>Jazz Book</h3>
-            <Chart measures={this.state.measures} deleteMeasure={this.deleteMeasure}/>
-            <Player {...this.state}/>
+            <Chart {...this.state}/>
+            <Player {...this.state} updateActiveMeasure={this.updateActiveMeasure}/>
             <ChartEditor measures={this.state.measures} appendMeasure={this.appendMeasure}/>
         </div>;
     }

@@ -12,7 +12,9 @@ export default (props) => {
         </div>;
     }
 
-    return <div className="measure simple-border">
+    const getActiveClass = () => props.activeMeasure ? 'active-measure' : '';
+
+    return <div className={"measure simple-border " + getActiveClass()}>
         <button className='delete-measure-button app-button' onClick={() => props.deleteMeasure(props.index)}>X</button>
         <div className="chord-display">
             <span>{props.measure.note}</span>

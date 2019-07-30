@@ -26,17 +26,15 @@ export default class Player extends React.Component {
             var measureCount = 0;
     
             this.props.measures.forEach((measure) => {
-                measureCount++;
+                this.props.updateActiveMeasure(measureCount++);
                 var beatCount = 0;
     
                 getArpeggioNotes(measure.note, measure.chordType).forEach((note) => {
-    
                     var playNoteAt = measureCount + ':' + beatCount;
                     var noteDuration = '4n'
-                    var noteName = note + '4';
     
-                    console.log('Play ' + noteName + ' for ' + noteDuration + ' at ' + playNoteAt);
-                    this.state.synth.triggerAttackRelease(noteName, noteDuration, playNoteAt);
+                    console.log('Play ' + note + ' for ' + noteDuration + ' at ' + playNoteAt);
+                    this.state.synth.triggerAttackRelease(note, noteDuration, playNoteAt);
     
                     beatCount++;
                 });

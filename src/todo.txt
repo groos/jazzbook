@@ -1,4 +1,3 @@
-- set chord type to be select dropdown
 - add edit button to measure
 - create nice display name function for the chords
     - could include descriptions/wiki links
