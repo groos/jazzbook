@@ -24,28 +24,29 @@ export default class Player extends React.Component {
     schedulePlayback = () => {
         Tone.Transport.bpm.value = parseInt(this.props.beatsPerMinute);
 
-        var grossMeasureCount = 0;
-
         var loop = new Tone.Loop((loopTime) => {
             var activeMeasure = 0;
+            var timeElapsed = 0;
 
             this.props.measures.forEach((measure) => {
-                grossMeasureCount++; 
-                var beatCount = 0;
-    
-                getArpeggioNotes(measure.note, measure.chordType).forEach((note) => {
-                    var currentMeasure = activeMeasure;
-    
-                    // ToneJS notation for keeping time
-                    var playNoteAt = grossMeasureCount + ':' + beatCount;
-                    var noteDuration = '4n'
-    
-                    Tone.Transport.schedule((loopTime) => {
-                        this.props.updateActiveMeasure(currentMeasure);
-                        this.state.synth.triggerAttackRelease(note, noteDuration, loopTime);
-                    }, playNoteAt)
-    
-                    beatCount++;
+
+                // 1 chord per measure = quarter notes, 2 per measure = 8th notes
+                var arpeggioNoteDuration = measure.chords.length * 4;
+
+                measure.chords.forEach((chord) => {
+                    getArpeggioNotes(chord.note, chord.chordType).forEach((note) => {
+                        var currentMeasure = activeMeasure;
+
+                        var noteDuration = arpeggioNoteDuration + 'n';
+
+                        Tone.Transport.schedule((loopTime) => {
+                            this.props.updateActiveMeasure(currentMeasure);
+                            console.log('playing ' + note + ' ' + noteDuration);
+                            this.state.synth.triggerAttackRelease(note, noteDuration, loopTime);
+                        }, timeElapsed);
+
+                        timeElapsed += Tone.Time(noteDuration);
+                    });
                 });
 
                 activeMeasure++;
