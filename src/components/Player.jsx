@@ -24,27 +24,35 @@ export default class Player extends React.Component {
     schedulePlayback = () => {
         Tone.Transport.bpm.value = parseInt(this.props.beatsPerMinute);
 
-        var measureCount = 0;
+        var grossMeasureCount = 0;
 
-        this.props.measures.forEach((measure) => {
-            measureCount++;
-            var beatCount = 0;
+        var loop = new Tone.Loop((loopTime) => {
+            var activeMeasure = 0;
 
-            getArpeggioNotes(measure.note, measure.chordType).forEach((note) => {
-                var currentMeasure = measureCount - 1;
+            this.props.measures.forEach((measure) => {
+                grossMeasureCount++; 
+                var beatCount = 0;
+    
+                getArpeggioNotes(measure.note, measure.chordType).forEach((note) => {
+                    var currentMeasure = activeMeasure;
+    
+                    // ToneJS notation for keeping time
+                    var playNoteAt = grossMeasureCount + ':' + beatCount;
+                    var noteDuration = '4n'
+    
+                    Tone.Transport.schedule((loopTime) => {
+                        this.props.updateActiveMeasure(currentMeasure);
+                        this.state.synth.triggerAttackRelease(note, noteDuration, loopTime);
+                    }, playNoteAt)
+    
+                    beatCount++;
+                });
 
-                // ToneJS notation for keeping time
-                var playNoteAt = measureCount + ':' + beatCount;
-                var noteDuration = '4n'
-
-                Tone.Transport.schedule((time) => {
-                    this.props.updateActiveMeasure(currentMeasure);
-                    this.state.synth.triggerAttackRelease(note, noteDuration, time);
-                }, playNoteAt)
-
-                beatCount++;
+                activeMeasure++;
             });
         });
+
+        loop.start(0);
     }
 
     render () {
