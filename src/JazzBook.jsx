@@ -1,7 +1,8 @@
 import React from 'react';
 import Chart from './components/Chart';
 import ChartEditor from './components/ChartEditor';
-import {testMeasures} from './static.js';
+import Player from './components/Player';
+import {defaultValues, testMeasures} from './static.js';
 import './App.scss';
 
 class JazzBook extends React.Component {
@@ -10,7 +11,8 @@ class JazzBook extends React.Component {
 
         this.state = {
             measures: testMeasures,
-            beatsPerMeasure: 4
+            beatsPerMeasure: defaultValues.beatsPerMeasure,
+            beatsPerMinute: defaultValues.beatsPerMinute
         };
 
         this.appendMeasure = this.appendMeasure.bind(this);
@@ -39,6 +41,7 @@ class JazzBook extends React.Component {
         return <div>
             <h3>Jazz Book</h3>
             <Chart measures={this.state.measures} deleteMeasure={this.deleteMeasure}/>
+            <Player {...this.state}/>
             <ChartEditor measures={this.state.measures} appendMeasure={this.appendMeasure}/>
         </div>;
     }

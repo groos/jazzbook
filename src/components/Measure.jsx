@@ -1,15 +1,9 @@
 import React from 'react';
-
-var tonal = require('tonal');
+import {getArpeggioNotes} from '../utility/musicTheory.js';
 
 export default (props) => {
-
-    const getArpeggioNotes = () => tonal.chord(props.measure.chordType).map((interval) => {
-        return tonal.transpose(props.measure.note, interval);
-    });
-
     const getArpeggioMarkup = () => {
-        var notes = getArpeggioNotes();
+        var notes = getArpeggioNotes(props.measure.note, props.measure.chordType)
 
         return <div className='arpeggio-display'>
             {notes.map((note) => {
