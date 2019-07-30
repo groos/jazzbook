@@ -2,7 +2,7 @@ import React from 'react';
 import Chart from './components/Chart';
 import ChartEditor from './components/ChartEditor';
 import Player from './components/Player';
-import {defaultValues, testMeasures} from './static.js';
+import {defaultValues, testMeasures, songs } from './static.js';
 import './App.scss';
 
 class JazzBook extends React.Component {
@@ -10,7 +10,7 @@ class JazzBook extends React.Component {
         super(props);
 
         this.state = {
-            measures: testMeasures,
+            measures: songs['takeTheATrain'].measures,
             beatsPerMeasure: defaultValues.beatsPerMeasure,
             beatsPerMinute: defaultValues.beatsPerMinute,
             activeMeasure: 0
@@ -46,7 +46,7 @@ class JazzBook extends React.Component {
 
     render() {
         return <div className="simple-border">
-            <h3>Jazz Book</h3>
+            <h3>Fakebook.js</h3>
             <Chart {...this.state}/>
             <Player {...this.state} updateActiveMeasure={this.updateActiveMeasure}/>
             <ChartEditor measures={this.state.measures} appendMeasure={this.appendMeasure}/>

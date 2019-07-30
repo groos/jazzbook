@@ -1,3 +1,19 @@
+- add new loop for playing entire chords not just arpeggios
+    - likely abstract this out so we can just call like 'layer.addLoop()'
+- add logic to handle when an arpeggio has notes that jump to another octave
+    - keep all the notes in the same octave
+
+- figure out how to support multiple chords/measure in the editor
+    1. display a grid for the 1-4 chords/measure
+        - this one feels most like a fakebook
+    2. user specifies beats per chord
+
+- refactor player so that other time signatures are possible
+
+- add option to change arpeggio style
+    - inversion
+    - dont play 7th
+    - simplified - think bass line style
 - add edit button to measure
 - create nice display name function for the chords
     - could include descriptions/wiki links

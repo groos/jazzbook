@@ -23,7 +23,7 @@ export default class Player extends React.Component {
 
     schedulePlayback = () => {
         Tone.Transport.bpm.value = parseInt(this.props.beatsPerMinute);
-        Tone.Transport.swing = 0.25;
+        Tone.Transport.swing = 0.5;
 
         var loop = new Tone.Loop((loopTime) => {
             var activeMeasure = 0;
