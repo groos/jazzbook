@@ -28,7 +28,7 @@ class JazzBook extends React.Component {
 
     appendMeasure = (note, chordType, beats) => {
         this.state.measures.push({
-            note, chordType, beats: parseInt(beats)
+            chords: [{note, chordType, beats: parseInt(beats)}]
         });
 
         this.setState({

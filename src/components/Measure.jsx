@@ -2,8 +2,8 @@ import React from 'react';
 import {getArpeggioNotes} from '../utility/musicTheory.js';
 
 export default (props) => {
-    const getArpeggioMarkup = () => {
-        var notes = getArpeggioNotes(props.measure.note, props.measure.chordType)
+    const getArpeggioMarkup = (chord) => {
+        var notes = getArpeggioNotes(chord.note, chord.chordType)
 
         return <div className='arpeggio-display'>
             {notes.map((note) => {
@@ -12,15 +12,21 @@ export default (props) => {
         </div>;
     }
 
+    const getChordsMarkup = () => {
+        return props.measure.chords.map((chord) => {
+            return <div className="chord-display">
+            <span>{chord.note}</span>
+            <span>{chord.chordType}</span>
+
+            {getArpeggioMarkup(chord)}
+        </div>
+        });
+    }
+
     const getActiveClass = () => props.activeMeasure ? 'active-measure' : '';
 
     return <div className={"measure simple-border " + getActiveClass()}>
         <button className='delete-measure-button app-button' onClick={() => props.deleteMeasure(props.index)}>X</button>
-        <div className="chord-display">
-            <span>{props.measure.note}</span>
-            <span>{props.measure.chordType}</span>
-
-            {getArpeggioMarkup()}
-        </div>
+        {getChordsMarkup()}
     </div>
 }
