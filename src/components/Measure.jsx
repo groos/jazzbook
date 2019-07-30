@@ -14,7 +14,7 @@ export default (props) => {
 
     const getChordsMarkup = () => {
         return props.measure.chords.map((chord) => {
-            return <div className="chord-display">
+            return <div className="chord-display simple-border">
             <span>{chord.note}</span>
             <span>{chord.chordType}</span>
 

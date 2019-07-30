@@ -1,6 +1,11 @@
 .simple-border {
-    border: 1px solid grey;
+    border: 3px solid grey;
     padding: 10px;
+    margin: 10px;
+
+    &:hover {
+        border-color: purple;
+    }
 }
 
 .app-button {

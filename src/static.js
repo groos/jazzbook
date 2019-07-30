@@ -26,7 +26,7 @@ module.exports = {
         { chords: [{ note: 'G3', chordType: '7', beats: 4 }] },
         { chords: [{ note: 'F3', chordType: '7', beats: 4 }] },
         { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
-        { chords: [{ note: 'G3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'C3', chordType: '7', beats: 4 }, { note: 'G3', chordType: '7', beats: 4 }] },
     ],
     defaultValues: {
         beatsPerMeasure: 4,

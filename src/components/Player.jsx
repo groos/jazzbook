@@ -23,6 +23,7 @@ export default class Player extends React.Component {
 
     schedulePlayback = () => {
         Tone.Transport.bpm.value = parseInt(this.props.beatsPerMinute);
+        Tone.Transport.swing = 0.25;
 
         var loop = new Tone.Loop((loopTime) => {
             var activeMeasure = 0;
@@ -57,9 +58,9 @@ export default class Player extends React.Component {
     }
 
     render () {
-        return <div className="player-wrapper">
-            <h5>Player</h5>
-            <button onClick={this.play}>Start/Stop!</button>
+        return <div className="player-wrapper simple-border">
+            <h3>Player</h3>
+            <button className="app-button" onClick={this.play}>Start/Stop!</button>
         </div>
     }
 }
