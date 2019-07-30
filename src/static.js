@@ -7,26 +7,26 @@ module.exports = {
         ]
     ],
     testMeasures: [
-        { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
-        {
-            chords: [
-                { note: 'D3', chordType: 'm7', beats: 2 },
-                { note: 'G3', chordType: '7', beats: 2 }
-            ]
-        }
+        // { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
+        // {
+        //     chords: [
+        //         { note: 'D3', chordType: 'm7', beats: 2 },
+        //         { note: 'G3', chordType: '7', beats: 2 }
+        //     ]
+        // }
 
-        // { note: 'C3', chordType: '7', beats: 4 },
-        // { note: 'C3', chordType: '7', beats: 4 },
-        // { note: 'C3', chordType: '7', beats: 4 },
-        // { note: 'C3', chordType: '7', beats: 4 },
-        // { note: 'F3', chordType: '7', beats: 4 },
-        // { note: 'F3', chordType: '7', beats: 4 },
-        // { note: 'C3', chordType: '7', beats: 4 },
-        // { note: 'C3', chordType: '7', beats: 4 },
-        // { note: 'G3', chordType: '7', beats: 4 },
-        // { note: 'F3', chordType: '7', beats: 4 },
-        // { note: 'C3', chordType: '7', beats: 4 },
-        // { note: 'G3', chordType: '7', beats: 4 },
+        { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'F3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'F3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'G3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'F3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+        { chords: [{ note: 'G3', chordType: '7', beats: 4 }] },
     ],
     defaultValues: {
         beatsPerMeasure: 4,
