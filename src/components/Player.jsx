@@ -26,7 +26,7 @@ export default class Player extends React.Component {
 
         var loop = new Tone.Loop((loopTime) => {
             var activeMeasure = 0;
-            var timeElapsed = 0;
+            var timeElapsed = loopTime;
 
             this.props.measures.forEach((measure) => {
 
@@ -39,10 +39,10 @@ export default class Player extends React.Component {
 
                         var noteDuration = arpeggioNoteDuration + 'n';
 
-                        Tone.Transport.schedule((loopTime) => {
+                        Tone.Transport.schedule((innerLoopTime) => {
                             this.props.updateActiveMeasure(currentMeasure);
                             console.log('playing ' + note + ' ' + noteDuration);
-                            this.state.synth.triggerAttackRelease(note, noteDuration, loopTime);
+                            this.state.synth.triggerAttackRelease(note, noteDuration, innerLoopTime);
                         }, timeElapsed);
 
                         timeElapsed += Tone.Time(noteDuration);
@@ -51,7 +51,7 @@ export default class Player extends React.Component {
 
                 activeMeasure++;
             });
-        });
+        }, this.props.measures.length + 'm');
 
         loop.start(0);
     }
