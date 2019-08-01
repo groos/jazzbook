@@ -13,6 +13,7 @@ export default class Player extends React.Component {
         };
 
         this.play = this.play.bind(this);
+        this.addLoop = this.addLoop.bind(this);
         this.addArpeggioLoop = this.addArpeggioLoop.bind(this);
         this.addChordLoop = this.addChordLoop.bind(this);
         this.schedulePlayback = this.schedulePlayback.bind(this);
@@ -24,70 +25,67 @@ export default class Player extends React.Component {
 
     play = () => Tone.Transport.toggle();
 
-    addArpeggioLoop = () => {
-        var arpeggioLoop = new Tone.Loop((loopTime) => {
+    addLoop = (chordFunction) => {
+        var loop = new Tone.Loop((loopTime) => {
             var activeMeasure = 0;
             var timeElapsed = loopTime;
 
             this.props.measures.forEach((measure) => {
-
                 measure.chords.forEach((chord) => {
-                    getArpeggioNotes(chord.note, chord.chordType).forEach((note) => {
-                        var currentMeasure = activeMeasure;
+                    chordFunction(chord, activeMeasure, timeElapsed);
 
-                        // 1 chord per 4 beat measure = quarter notes, 1 chord per 1 beat = 16th note
-                        var noteDuration = 16 / chord.beats + 'n';
-
-                        Tone.Transport.schedule((innerLoopTime) => {
-                            this.props.updateActiveMeasure(currentMeasure);
-                            console.log('playing ' + note + ' ' + noteDuration);
-                            this.state.synth.triggerAttackRelease(note, noteDuration, innerLoopTime);
-                        }, timeElapsed);
-
-                        timeElapsed += Tone.Time(noteDuration);
-                    });
+                    for(var i = 1; i <= chord.beats; i++) {
+                        timeElapsed += Tone.Time('4n');
+                    }
                 });
 
                 activeMeasure++;
             });
         }, this.props.measures.length + 'm');
 
-        arpeggioLoop.start(0);
+        loop.start(0);
+    }
+
+    addArpeggioLoop = () => {
+        var arpeggioFunction = (chord, activeMeasure, timeElapsed) => {
+            getArpeggioNotes(chord.note, chord.chordType).forEach((note) => {
+                // 1 chord per 4 beat measure = quarter notes, 1 chord per 1 beat = 16th note
+                var noteDuration = 16 / chord.beats + 'n';
+
+                Tone.Transport.schedule((innerLoopTime) => {
+                    this.props.updateActiveMeasure(activeMeasure);
+                    console.log('playing ' + note + ' ' + noteDuration);
+                    this.state.synth.triggerAttackRelease(note, noteDuration, innerLoopTime);
+                }, timeElapsed);
+
+                timeElapsed += Tone.Time(noteDuration);
+            });
+        };
+
+        this.addLoop(arpeggioFunction);
     }
 
     addChordLoop = () => {
-        var chordLoop = new Tone.Loop((loopTime) => {
-            var activeMeasure = 0;
-            var timeElapsed = loopTime;
+        var chordFunction = (chord, activeMeasure, timeElapsed) => {
+            var chordDuration = 0;
+            
+            for(var i = 1; i <= chord.beats; i++) {
+                chordDuration += Tone.Time('4n');
+            }
 
-            this.props.measures.forEach((measure) => {
-                measure.chords.forEach((chord) => {
+            Tone.Transport.schedule((innerLoopTime) => {
+                this.props.updateActiveMeasure(activeMeasure);
 
-                    var chordNotes = getArpeggioNotes(chord.note, chord.chordType);
+                var chordNotes = getArpeggioNotes(chord.note, chord.chordType);
+                console.log('playing ' + chordNotes[0] + 'for ' + chordDuration)
 
-                    var currentMeasure = activeMeasure;
-                    var chordDuration = 0;
-                    
-                    for(var i = 1; i <= chord.beats; i++) {
-                        chordDuration += Tone.Time('4n');
-                    }
+                this.state.polySynth.triggerAttackRelease(chordNotes, chordDuration, innerLoopTime);
+            }, timeElapsed)
 
-                    Tone.Transport.schedule((innerLoopTime) => {
-                        this.props.updateActiveMeasure(currentMeasure);
+            timeElapsed += Tone.Time(chordDuration);
+        }
 
-                        console.log('playing ' + chordNotes[0] + 'for ' + chordDuration)
-                        this.state.polySynth.triggerAttackRelease(chordNotes, chordDuration, innerLoopTime);
-                    }, timeElapsed)
-
-                    timeElapsed += Tone.Time(chordDuration);
-                });
-
-                
-                activeMeasure++;
-            });
-        }, this.props.measures.length + 'm');
-
-        chordLoop.start(0);
+        this.addLoop(chordFunction);
     }
 
     schedulePlayback = () => {
