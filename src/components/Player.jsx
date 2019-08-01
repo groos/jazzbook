@@ -8,8 +8,8 @@ export default class Player extends React.Component {
         super(props);
 
         this.state = {
-            synth: new Tone.Synth().toMaster(),
-            polySynth: new Tone.PolySynth(4, Tone.Synth).toMaster()
+            synth: new Tone.DuoSynth().toMaster(),
+            polySynth: new Tone.PolySynth(4, Tone.DuoSynth).toMaster()
         };
 
         this.play = this.play.bind(this);
@@ -90,7 +90,7 @@ export default class Player extends React.Component {
 
     schedulePlayback = () => {
         Tone.Transport.bpm.value = parseInt(this.props.beatsPerMinute);
-        //Tone.Transport.swing = 0.25;
+        Tone.Transport.swing = 0.25;
 
         this.addArpeggioLoop();
         //this.addChordLoop();

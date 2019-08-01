@@ -1,5 +1,9 @@
-- add new loop for playing entire chords not just arpeggios
-    - likely abstract this out so we can just call like 'layer.addLoop()'
+- add new instruments
+
+- add selection for new instrument
+
+- when you click on a chord, play that chord
+
 - add logic to handle when an arpeggio has notes that jump to another octave
     - keep all the notes in the same octave
 
