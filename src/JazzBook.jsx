@@ -48,7 +48,7 @@ class JazzBook extends React.Component {
     render() {
         return <div className="simple-border">
             <h3>Fakebook.js</h3>
-            <Chart {...this.state}/>
+            <Chart {...this.state} deleteMeasure={this.deleteMeasure}/>
             <Player {...this.state} updateActiveMeasure={this.updateActiveMeasure}/>
             <ChartEditor measures={this.state.measures} appendMeasure={this.appendMeasure}/>
         </div>;

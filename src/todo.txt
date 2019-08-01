@@ -1,8 +1,8 @@
-- add new instruments
-
-- add selection for new instrument
+- implement pretty chord display
 
 - when you click on a chord, play that chord
+
+- add new instrument presets + selection
 
 - add logic to handle when an arpeggio has notes that jump to another octave
     - keep all the notes in the same octave
