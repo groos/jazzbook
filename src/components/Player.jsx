@@ -2,6 +2,7 @@ import React from 'react';
 import Tone from 'tone';
 
 import {getArpeggioNotes} from  '../utility/musicTheory.js';
+import { throwStatement } from '@babel/types';
 
 export default class Player extends React.Component {
     constructor(props) {
@@ -12,6 +13,8 @@ export default class Player extends React.Component {
         };
 
         this.play = this.play.bind(this);
+        this.addArpeggioLoop = this.addArpeggioLoop.bind(this);
+        this.addChordLoop = this.addChordLoop.bind(this);
         this.schedulePlayback = this.schedulePlayback.bind(this);
     }
 
@@ -21,24 +24,19 @@ export default class Player extends React.Component {
 
     play = () => Tone.Transport.toggle();
 
-    schedulePlayback = () => {
-        Tone.Transport.bpm.value = parseInt(this.props.beatsPerMinute);
-        Tone.Transport.swing = 0.5;
-
-        var loop = new Tone.Loop((loopTime) => {
+    addArpeggioLoop = () => {
+        var arpeggioLoop = new Tone.Loop((loopTime) => {
             var activeMeasure = 0;
             var timeElapsed = loopTime;
 
             this.props.measures.forEach((measure) => {
 
-                // 1 chord per measure = quarter notes, 2 per measure = 8th notes
-                var arpeggioNoteDuration = measure.chords.length * 4;
-
                 measure.chords.forEach((chord) => {
                     getArpeggioNotes(chord.note, chord.chordType).forEach((note) => {
                         var currentMeasure = activeMeasure;
 
-                        var noteDuration = arpeggioNoteDuration + 'n';
+                        // 1 chord per 4 beat measure = quarter notes, 1 chord per 1 beat = 16th note
+                        var noteDuration = 16 / chord.beats + 'n';
 
                         Tone.Transport.schedule((innerLoopTime) => {
                             this.props.updateActiveMeasure(currentMeasure);
@@ -54,7 +52,18 @@ export default class Player extends React.Component {
             });
         }, this.props.measures.length + 'm');
 
-        loop.start(0);
+        arpeggioLoop.start(0);
+    }
+
+    addChordLoop = () => {
+
+    }
+
+    schedulePlayback = () => {
+        Tone.Transport.bpm.value = parseInt(this.props.beatsPerMinute);
+        Tone.Transport.swing = 0.25;
+
+        this.addArpeggioLoop();
     }
 
     render () {

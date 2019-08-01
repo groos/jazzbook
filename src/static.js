@@ -29,7 +29,8 @@ module.exports = {
         {
             chords: [
                 { note: 'D3', chordType: 'm7', beats: 2 },
-                { note: 'G3', chordType: '7', beats: 2 }
+                { note: 'G3', chordType: '7', beats: 1 },
+                { note: 'G3', chordType: '7', beats: 1 }
             ]
         },
         {
@@ -82,5 +83,6 @@ module.exports = {
             fullName: 'Minor 7 Flat 5',
             shortName: 'm7b5'
         }
-    ]
+    ],
+    notes: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'B#', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', 'Ab', 'Bb']
 };
