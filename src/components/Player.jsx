@@ -2,14 +2,14 @@ import React from 'react';
 import Tone from 'tone';
 
 import {getArpeggioNotes} from  '../utility/musicTheory.js';
-import { throwStatement } from '@babel/types';
 
 export default class Player extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            synth: new Tone.Synth().toMaster()
+            synth: new Tone.Synth().toMaster(),
+            polySynth: new Tone.PolySynth(4, Tone.Synch).toMaster()
         };
 
         this.play = this.play.bind(this);
@@ -56,7 +56,38 @@ export default class Player extends React.Component {
     }
 
     addChordLoop = () => {
+        var chordLoop = new Tone.Loop((loopTime) => {
+            var activeMeasure = 0;
+            var timeElapsed = loopTime;
 
+            this.props.measures.forEach((measure) => {
+                measure.chords.forEach((chord) => {
+
+                    var chordNotes = getArpeggioNotes(chord.note, chord.chordType);
+
+                    var currentMeasure = activeMeasure;
+                    var chordDuration = 0;
+                    
+                    for(var i = 1; i <= chord.beats; i++) {
+                        chordDuration += Tone.Time('4n');
+                    }
+
+                    Tone.Transport.schedule((innerLoopTime) => {
+                        this.props.updateActiveMeasure(currentMeasure);
+
+                        console.log('playing ' + chordNotes[0] + 'for ' + chordDuration)
+                        this.state.polySynth.triggerAttackRelease(chordNotes, chordDuration, innerLoopTime);
+                    }, timeElapsed)
+
+                    timeElapsed += Tone.Time(chordDuration);
+                });
+
+                
+                activeMeasure++;
+            });
+        }, this.props.measures.length + 'm');
+
+        chordLoop.start(0);
     }
 
     schedulePlayback = () => {
@@ -64,6 +95,7 @@ export default class Player extends React.Component {
         Tone.Transport.swing = 0.25;
 
         this.addArpeggioLoop();
+        this.addChordLoop();
     }
 
     render () {
