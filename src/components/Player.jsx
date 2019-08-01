@@ -9,7 +9,7 @@ export default class Player extends React.Component {
 
         this.state = {
             synth: new Tone.Synth().toMaster(),
-            polySynth: new Tone.PolySynth(4, Tone.Synch).toMaster()
+            polySynth: new Tone.PolySynth(4, Tone.Synth).toMaster()
         };
 
         this.play = this.play.bind(this);
@@ -53,9 +53,9 @@ export default class Player extends React.Component {
                 var noteDuration = 16 / chord.beats + 'n';
 
                 Tone.Transport.schedule((innerLoopTime) => {
-                    this.props.updateActiveMeasure(activeMeasure);
                     console.log('playing ' + note + ' ' + noteDuration);
                     this.state.synth.triggerAttackRelease(note, noteDuration, innerLoopTime);
+                    this.props.updateActiveMeasure(activeMeasure);
                 }, timeElapsed);
 
                 timeElapsed += Tone.Time(noteDuration);
@@ -90,10 +90,10 @@ export default class Player extends React.Component {
 
     schedulePlayback = () => {
         Tone.Transport.bpm.value = parseInt(this.props.beatsPerMinute);
-        Tone.Transport.swing = 0.25;
+        //Tone.Transport.swing = 0.25;
 
         this.addArpeggioLoop();
-        this.addChordLoop();
+        //this.addChordLoop();
     }
 
     render () {
