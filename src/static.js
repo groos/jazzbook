@@ -3,14 +3,14 @@ module.exports = {
         'takeTheATrain' : {
             songTitle: 'Take the A Train',
             measures: [
-                { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }]},
+                { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }], beginRepeat: true },
                 { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }]},
                 { chords: [{ note: 'D3', chordType: '7b5', beats: 4 }]},
                 { chords: [{ note: 'D3', chordType: '7b5', beats: 4 }]},
                 { chords: [{ note: 'D3', chordType: 'm7', beats: 4 }]},
                 { chords: [{ note: 'G2', chordType: '7', beats: 4 }]},
                 { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }]},
-                { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }]},
+                { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }], endRepeat: true },
             ]
         }
     },

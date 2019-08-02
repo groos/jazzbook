@@ -93,7 +93,7 @@ export default class Player extends React.Component {
         Tone.Transport.swing = 0.25;
 
         this.addArpeggioLoop();
-        //this.addChordLoop();
+        this.addChordLoop();
     }
 
     render () {
