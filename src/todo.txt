@@ -1,4 +1,6 @@
-- implement pretty chord display
+- implement pretty chord display on hover
+
+- add property to measure to indicate double bars on the staff
 
 - add support for time signatures - will have to refactor player
 

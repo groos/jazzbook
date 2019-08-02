@@ -7,7 +7,7 @@ export default (props) => {
 
         return <div className='arpeggio-display'>
             {notes.map((note) => {
-                return <span className='arpeggio-note'>{note}</span>
+                return <span className='arpeggio-note'>{getSimpleNoteName(note)}</span>
             })}
         </div>;
     }
@@ -20,15 +20,17 @@ export default (props) => {
             <span>{getSimpleNoteName(chord.note)}</span>
             <span>{chord.chordType}</span>
 
-            {/* {getArpeggioMarkup(chord)} */}
+            <div className="chord-detail-wrapper">
+                {getArpeggioMarkup(chord)}
+            </div>
         </div>
         });
     }
 
-    const getActiveClass = () => props.activeMeasure ? 'active-measure' : '';
+    const getActiveClass = () => props.activeMeasure ? ' active-measure' : ' ';
 
-    return <div className={"measure simple-border " + getActiveClass()}>
-        <button className='delete-measure-button app-button' onClick={() => props.deleteMeasure(props.index)}>X</button>
+    return <div className={"measure simple-border" + getActiveClass()}>
+        <button className='app-button delete-button delete-measure-button' onClick={() => props.deleteMeasure(props.index)}>X</button>
         <div className="measure-chords-wrapper">
             {getChordsMarkup()}
         </div>

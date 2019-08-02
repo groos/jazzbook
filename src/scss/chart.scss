@@ -12,7 +12,6 @@
         }
     
         .delete-measure-button {
-            position: absolute;
             top: -20px;
             right: -20px;
         }
@@ -23,6 +22,10 @@
     
         .arpeggio-note:not(:last-child) {
             margin: 0 10px 0 0;
+        }
+
+        .chord-detail-wrapper {
+            display: none;
         }
     }
 }
@@ -36,12 +39,6 @@
     .measure-chord {
         display: inline-block;
         position: relative;
-    }
-
-    .delete-measure-button {
-        position: absolute;
-        top: 0;
-        right: 0;
     }
 
     .note-type-list {
@@ -64,5 +61,15 @@
         text-align: center;
         overflow-wrap: break-word;
         background-color: lightblue;
+
+        &:hover {
+            .chord-detail-wrapper {
+               display: block;
+               position: absolute;
+               background-color: white;
+               border: 3px solid black;
+               padding: 10px;
+           }
+       }
     }
 }

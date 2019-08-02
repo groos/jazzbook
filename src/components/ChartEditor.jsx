@@ -59,7 +59,7 @@ export default class ChartEditor extends React.Component {
     getChordsMarkup() {
         return this.state.chords.map((chord, index) => {
             return <div className="measure-chord simple-border">
-                <button className='delete-measure-button app-button' onClick={() => this.deleteChordFromMeasure(index)}>X</button>
+                <button className='delete-button app-button' onClick={() => this.deleteChordFromMeasure(index)}>X</button>
                 <div className="simple-border">
                     <input placeholder="Note" className='editor-input' onChange={(e) => this.updateChord(index, 'note', e.target.value)} />
 
@@ -84,11 +84,9 @@ export default class ChartEditor extends React.Component {
 
             <div className="simple-border">
                 {this.getChordsMarkup()}
-                
                 <div>
                     <button className="app-button" onClick={this.addChordToMeasure} >include another chord</button>
                 </div>
-
             </div>
 
             <button className='editor-submit-button app-button' onClick={() => this.props.appendMeasure(this.state.chords)}>Add Measure</button>
