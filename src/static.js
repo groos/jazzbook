@@ -93,9 +93,19 @@ module.exports = {
                 beats: 4
             },
             {
+                name: 'dotted half',
+                unicode: '\u{1D15E}.',
+                beats: 3
+            },
+            {
                 name: 'half',
                 unicode: '\u{1D15E}',
                 beats: 2
+            },
+            {
+                name: 'dotted quarter',
+                unicode: '\u{2669}.',
+                beats: 1.5
             },
                 {
                 name: 'quarter',
