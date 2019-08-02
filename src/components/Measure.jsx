@@ -1,5 +1,5 @@
 import React from 'react';
-import {getArpeggioNotes} from '../utility/musicTheory.js';
+import {getArpeggioNotes, getSimpleNoteName} from '../utility/musicTheory.js';
 
 export default (props) => {
     const getArpeggioMarkup = (chord) => {
@@ -14,11 +14,13 @@ export default (props) => {
 
     const getChordsMarkup = () => {
         return props.measure.chords.map((chord) => {
-            return <div className="chord-display simple-border">
-            <span>{chord.note}</span>
+            var displayWidth = chord.beats/props.beatsPerMeasure * 100 + '%';
+
+            return <div className="chord-display" style={{'width': displayWidth}}>
+            <span>{getSimpleNoteName(chord.note)}</span>
             <span>{chord.chordType}</span>
 
-            {getArpeggioMarkup(chord)}
+            {/* {getArpeggioMarkup(chord)} */}
         </div>
         });
     }
@@ -27,6 +29,9 @@ export default (props) => {
 
     return <div className={"measure simple-border " + getActiveClass()}>
         <button className='delete-measure-button app-button' onClick={() => props.deleteMeasure(props.index)}>X</button>
-        {getChordsMarkup()}
+        <div className="measure-chords-wrapper">
+            {getChordsMarkup()}
+        </div>
+        
     </div>
 }

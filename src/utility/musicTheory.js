@@ -5,5 +5,8 @@ module.exports = {
         return tonal.chord(chordType).map((interval) => {
             return tonal.transpose(root, interval);
         })
+    },
+    getSimpleNoteName: (note) => {
+        return note.substring(0, note.length - 1);
     }
 }

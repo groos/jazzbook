@@ -69,7 +69,7 @@ export default class ChartEditor extends React.Component {
                         })}
                     </select>
 
-                    <div clasName='chord-duration-label'>Duration: {chord.beats} beats</div>
+                    <div className='chord-duration-label'>Duration: {chord.beats} beats</div>
 
                     {this.getChordDurationPicker(index)}
                 </div>
@@ -84,8 +84,9 @@ export default class ChartEditor extends React.Component {
 
             <div className="simple-border">
                 {this.getChordsMarkup()}
+                
                 <div>
-                    <button className="app-button" onClick={this.addChordToMeasure} >add another chord</button>
+                    <button className="app-button" onClick={this.addChordToMeasure} >include another chord</button>
                 </div>
 
             </div>

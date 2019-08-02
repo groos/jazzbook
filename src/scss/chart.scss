@@ -10,15 +10,11 @@
         &.active-measure {
             background-color: purple;
         }
-
-        .chord-display {
-            padding-left: 10px;
-        }
     
         .delete-measure-button {
             position: absolute;
-            top: 0;
-            right: 0;
+            top: -20px;
+            right: -20px;
         }
     
         .arpeggio-display {
@@ -57,5 +53,16 @@
             width: 20%;
             cursor: pointer;
         }
+    }
+}
+
+.measure-chords-wrapper {
+    background-color: lightgrey;
+
+    .chord-display {
+        display: inline-block;
+        text-align: center;
+        overflow-wrap: break-word;
+        background-color: lightblue;
     }
 }
