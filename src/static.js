@@ -84,5 +84,27 @@ module.exports = {
             shortName: 'm7b5'
         }
     ],
-    notes: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'B#', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', 'Ab', 'Bb']
+    notes: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'B#', 'Cb', 'Db', 'Eb', 'Fb', 'Gb', 'Ab', 'Bb'],
+    noteLengths: {
+        '4': {
+            options: [{
+                name: 'whole',
+                unicode: '\u{1D15D}',
+                beats: 4
+            },
+            {
+                name: 'half',
+                unicode: '\u{1D15E}',
+                beats: 2
+            },
+                {
+                name: 'quarter',
+                unicode: '\u{2669}',
+                beats: 1
+            }]
+        },
+        '6': {
+
+        }
+    }
 };

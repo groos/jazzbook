@@ -1,5 +1,7 @@
 - implement pretty chord display
 
+- add support for time signatures - will have to refactor player
+
 - when you click on a chord, play that chord
 
 - add new instrument presets + selection

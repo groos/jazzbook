@@ -27,9 +27,9 @@ class JazzBook extends React.Component {
         });
     }
 
-    appendMeasure = (note, chordType, beats) => {
+    appendMeasure = (chords) => {
         this.state.measures.push({
-            chords: [{note, chordType, beats: parseInt(beats)}]
+            chords: chords
         });
 
         this.setState({
@@ -50,7 +50,7 @@ class JazzBook extends React.Component {
             <h3>Fakebook.js</h3>
             <Chart {...this.state} deleteMeasure={this.deleteMeasure}/>
             <Player {...this.state} updateActiveMeasure={this.updateActiveMeasure}/>
-            <ChartEditor measures={this.state.measures} appendMeasure={this.appendMeasure}/>
+            <ChartEditor {...this.state} appendMeasure={this.appendMeasure}/>
         </div>;
     }
 }

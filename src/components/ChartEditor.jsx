@@ -1,24 +1,96 @@
-import React, { useState } from 'react';
-import {defaultValues, chordTypes} from '../static.js';
+import React from 'react';
+import { defaultValues, chordTypes, noteLengths } from '../static.js';
 
-export default (props) => {
-    const[note, setNote] = useState('');
-    const[chordType, setChordType] = useState(defaultValues.chordType);
-    const[beats, setBeats] = useState(defaultValues.beatsPerMeasure);
+export default class ChartEditor extends React.Component {
+    constructor(props) {
+        super(props);
 
-    return <div className="chart-editor-wrapper simple-border">
+        this.state = {
+            chords: [{
+                note: '',
+                chordType: defaultValues.chordType,
+                beats: props.beatsPerMeasure
+            }]
+        }
+
+        this.addChordToMeasure = this.addChordToMeasure.bind(this);
+        this.getChordsMarkup = this.getChordsMarkup.bind(this);
+        this.getChordDurationPicker = this.getChordDurationPicker.bind(this);
+    }
+
+    addChordToMeasure() {
+        this.state.chords.push({
+            note: '',
+            chordType: defaultValues.chordType,
+            beats: this.props.beatsPerMeasure
+        });
+
+        this.setState({
+            chords: this.state.chords
+        });
+    }
+
+    deleteChordFromMeasure(index) {
+        this.state.chords.splice(index, 1);
+
+        this.setState({
+            chords: this.state.chords
+        });
+    }
+
+    updateChord(index, property, value) {
+        this.state.chords[index][property] = value;
+
+        this.setState({
+            chords: this.state.chords
+        });
+    }
+
+    getChordDurationPicker(chordIndex) {
+        return <div className="note-type-list">
+            {
+                noteLengths[this.props.beatsPerMeasure].options.map((noteType) => {
+                    return <button className="note-type" onClick={(e) => this.updateChord(chordIndex, 'beats', noteType.beats)}>{noteType.unicode}</button>;
+                })
+            }
+        </div>
+    }
+
+    getChordsMarkup() {
+        return this.state.chords.map((chord, index) => {
+            return <div className="measure-chord simple-border">
+                <button className='delete-measure-button app-button' onClick={() => this.deleteChordFromMeasure(index)}>X</button>
+                <div className="simple-border">
+                    <input placeholder="Note" className='editor-input' onChange={(e) => this.updateChord(index, 'note', e.target.value)} />
+
+                    <select onChange={(e) => this.updateChord(index, 'chordType', e.target.value)}>
+                        {chordTypes.map((chord) => {
+                            return <option value={chord.shortName}>{chord.fullName}</option>
+                        })}
+                    </select>
+
+                    <div clasName='chord-duration-label'>Duration: {chord.beats} beats</div>
+
+                    {this.getChordDurationPicker(index)}
+                </div>
+            </div>
+        });
+    }
+
+    render() {
+        return <div className="chart-editor-wrapper simple-border">
             <h3>Chart Editor</h3>
             <h4>Add Measure</h4>
-            <input placeholder="Note" className='editor-input' onChange={(e) => setNote(e.target.value)} />
 
-            <select onChange={(e) => setChordType(e.target.value)}>
-                {chordTypes.map((chord) => {
-                    return <option value={chord.shortName}>{chord.fullName}</option>
-                })}
-            </select>
+            <div className="simple-border">
+                {this.getChordsMarkup()}
+                <div>
+                    <button className="app-button" onClick={this.addChordToMeasure} >add another chord</button>
+                </div>
 
-            <input placeholder="Beats" className='editor-input' onChange={(e) => setBeats(e.target.value)} value={beats}/>
-            
-            <button className='editor-submit-button app-button' onClick={() => props.appendMeasure(note, chordType, beats)}>Add</button>
+            </div>
+
+            <button className='editor-submit-button app-button' onClick={() => this.props.appendMeasure(this.state.chords)}>Add Measure</button>
         </div>
+    }
 }

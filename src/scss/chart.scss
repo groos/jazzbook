@@ -36,4 +36,27 @@
         display: block;
         margin: 10px 0 10px 0;
     }
+
+    .measure-chord {
+        display: inline-block;
+        position: relative;
+    }
+
+    .delete-measure-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .note-type-list {
+       text-align: center;
+       margin: 10px;
+
+        .note-type {
+            font-size: xx-large;
+            padding: 0 5% 0 5%;
+            margin:  0 5% 0 5%;
+            cursor: pointer;
+        }
+    }
 }
