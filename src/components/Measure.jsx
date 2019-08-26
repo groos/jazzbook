@@ -27,7 +27,8 @@ export default (props) => {
         });
     }
 
-    const getActiveClass = () => props.activeMeasure ? ' active-measure' : ' ';
+    //const getActiveClass = () => props.activeMeasure ? ' active-measure' : ' ';
+    const getActiveClass = () => ' ';
 
     const getRepeatBar = () => {
         if (props.measure.beginRepeat) {

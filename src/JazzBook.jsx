@@ -10,6 +10,7 @@ class JazzBook extends React.Component {
         super(props);
 
         this.state = {
+            lines: songs['takeTheATrain'].lines,
             measures: songs['takeTheATrain'].measures,
             //measures: testMeasures,
             beatsPerMeasure: defaultValues.beatsPerMeasure,
@@ -49,7 +50,7 @@ class JazzBook extends React.Component {
         return <div className="simple-border">
             <h3>Fakebook.js</h3>
             <Chart {...this.state} deleteMeasure={this.deleteMeasure}/>
-            <Player {...this.state} updateActiveMeasure={this.updateActiveMeasure}/>
+            {/* <Player {...this.state} updateActiveMeasure={this.updateActiveMeasure}/> */}
             <ChartEditor {...this.state} appendMeasure={this.appendMeasure}/>
         </div>;
     }

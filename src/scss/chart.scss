@@ -1,10 +1,14 @@
 .chart-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
+
+    .chart-line {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+    }
 
     .measure {
-        width: 20%;
+        flex: 1;
         position: relative;
 
         &.active-measure {
