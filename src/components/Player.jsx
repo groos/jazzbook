@@ -26,22 +26,37 @@ export default class Player extends React.Component {
     play = () => Tone.Transport.toggle();
 
     addLoop = (chordFunction) => {
+        const totalMeasures = this.props.lines.reduce((acc, line) => acc + line.length);
+
         var loop = new Tone.Loop((loopTime) => {
             var activeMeasure = 0;
             var timeElapsed = loopTime;
 
-            this.props.measures.forEach((measure) => {
-                measure.chords.forEach((chord) => {
-                    chordFunction(chord, activeMeasure, timeElapsed);
-
-                    for(var i = 1; i <= chord.beats; i++) {
-                        timeElapsed += Tone.Time('4n');
-                    }
+            this.props.lines.forEach((line) => {
+                line.forEach((measure) => {
+                    measure.chords.forEach((chord) => {
+                        chordFunction(chord, activeMeasure, timeElapsed);
+    
+                        for(var i = 1; i <= chord.beats; i++) {
+                            timeElapsed += Tone.Time('4n');
+                        }
+                    });
+    
+                    activeMeasure++;
                 });
+            })
+            // this.props.measures.forEach((measure) => {
+            //     measure.chords.forEach((chord) => {
+            //         chordFunction(chord, activeMeasure, timeElapsed);
 
-                activeMeasure++;
-            });
-        }, this.props.measures.length + 'm');
+            //         for(var i = 1; i <= chord.beats; i++) {
+            //             timeElapsed += Tone.Time('4n');
+            //         }
+            //     });
+
+            //     activeMeasure++;
+            // });
+        }, totalMeasures + 'm');
 
         loop.start(0);
     }
@@ -93,7 +108,7 @@ export default class Player extends React.Component {
         Tone.Transport.swing = 0.25;
 
         this.addArpeggioLoop();
-        this.addChordLoop();
+        //this.addChordLoop();
     }
 
     render () {

@@ -4,6 +4,7 @@ module.exports = {
             songTitle: 'Take the A Train',
             timeSignature: '4/4',
             author: 'Billy Strayhorn',
+            source: 'The Real Book 6th edition',
             lines: [
                 [
                     { chords: [{ note: 'C3', chordType: '6', beats: 4 }], beginRepeat: true, isStart: true },
@@ -140,6 +141,7 @@ module.exports = {
         // },
     ],
     defaultValues: {
+        songSlug: 'takeTheATrain',
         beatsPerMeasure: 4,
         beatsPerMinute: 150,
         chordType: 'M7'

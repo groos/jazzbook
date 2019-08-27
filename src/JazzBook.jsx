@@ -2,7 +2,7 @@ import React from 'react';
 import Chart from './components/Chart';
 import ChartEditor from './components/ChartEditor';
 import Player from './components/Player';
-import {defaultValues, testMeasures, songs } from './static.js';
+import {defaultValues, songs } from './static.js';
 import './App.scss';
 
 class JazzBook extends React.Component {
@@ -10,8 +10,7 @@ class JazzBook extends React.Component {
         super(props);
 
         this.state = {
-            songSlug: 'killerJoe',
-            ...songs['killerJoe'],
+            ...songs[defaultValues.songSlug],
             ...defaultValues,
             activeMeasure: 0
         };
