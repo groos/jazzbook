@@ -2,17 +2,18 @@ module.exports = {
     songs: {
         'takeTheATrain': {
             songTitle: 'Take the A Train',
+            timeSignature: '4/4',
             lines: [
                 [
-                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }], beginRepeat: true },
-                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: '6', beats: 4 }], beginRepeat: true, isStart: true },
+                    { chords: [{ note: 'C3', chordType: '6', beats: 4 }] },
                     { chords: [{ note: 'D3', chordType: '7b5', beats: 4 }] },
                     { chords: [{ note: 'D3', chordType: '7b5', beats: 4 }] }
                 ],
                 [
                     { chords: [{ note: 'D3', chordType: 'm7', beats: 4 }] },
                     { chords: [{ note: 'G2', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: '6', beats: 4 }] },
                     { chords: [{ note: 'D3', chordType: 'm7', beats: 2 }, { note: 'G3', chordType: '7', beats: 2 }], endRepeat: true },
                     { chords: [{ note: 'G3', chordType: 'm7', beats: 2 }, { note: 'C3', chordType: '7', beats: 2 }], endRepeat: true }
                 ],
@@ -24,21 +25,24 @@ module.exports = {
                 ],
                 [
                     { chords: [{ note: 'D3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'D3', chordType: '7', beats: 4 }] },
                     { chords: [{ note: 'D3', chordType: 'm7', beats: 4 }] },
-                    { chords: [{ note: 'G3', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] }
+                    { chords: [{ note: 'G3', chordType: '7b9', beats: 4 }] }
                 ],
                 [
-                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: '6', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: '6', beats: 4 }] },
                     { chords: [{ note: 'D3', chordType: '7b5', beats: 4 }] },
-                    { chords: [{ note: 'D3', chordType: '7b5', beats: 4 }] },
-                    { chords: [{ note: 'D3', chordType: 'm7', beats: 4 }] }],
+                    { chords: [{ note: 'D3', chordType: '7b5', beats: 4 }] }],
                 [
+                    { chords: [{ note: 'D3', chordType: 'm7', beats: 4 }] },
                     { chords: [{ note: 'G3', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
-                    { chords: [{ note: 'D3', chordType: 'm7', beats: 2 }, { note: 'G3', chordType: '7', beats: 2 }] },
-                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
-                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] }
+                    { chords: [{ note: 'C3', chordType: '6', beats: 4 }] },
+                    { chords: [{ note: 'D3', chordType: 'm7', beats: 2 }, { note: 'G3', chordType: '7', beats: 2 }] }
+                ],
+                [
+                    { chords: [{ note: 'C3', chordType: '6', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }], isEnd: true }
                 ]
             ]
         }

@@ -10,11 +10,8 @@ class JazzBook extends React.Component {
         super(props);
 
         this.state = {
-            lines: songs['takeTheATrain'].lines,
-            measures: songs['takeTheATrain'].measures,
-            //measures: testMeasures,
-            beatsPerMeasure: defaultValues.beatsPerMeasure,
-            beatsPerMinute: defaultValues.beatsPerMinute,
+            ...songs['takeTheATrain'],
+            ...defaultValues,
             activeMeasure: 0
         };
 

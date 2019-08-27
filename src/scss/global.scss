@@ -1,5 +1,5 @@
 .simple-border {
-    border: 3px solid grey;
+    border: 3px solid purple;
     padding: 10px;
     margin: 10px;
 
@@ -7,8 +7,13 @@
         margin: 0;
     }
 
+    &.measure {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
     &:hover {
-        border-color: purple;
+        border-color: black;
     }
 }
 

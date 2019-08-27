@@ -2,20 +2,17 @@ import React from 'react';
 import Measure from './Measure';
 
 export default (props) => {
-    var buildChart = () => props.measures.map((m, i) => {
-        return <Measure measure={m} beatsPerMeasure={props.beatsPerMeasure} index={i} deleteMeasure={props.deleteMeasure} activeMeasure={props.activeMeasure === i} />
-    });
-
     var buildChartLines = () => props.lines.map((line, lineIndex) => {
-        return <div className="chart-line">
+        return <div className="chart-line" key={'line' + lineIndex}>
             {line.map((m, i) => {
-                return <Measure measure={m} beatsPerMeasure={props.beatsPerMeasure} index={i} deleteMeasure={props.deleteMeasure} activeMeasure={props.activeMeasure === i} />;
+                return <Measure measure={m} beatsPerMeasure={props.beatsPerMeasure} index={i} deleteMeasure={props.deleteMeasure} activeMeasure={props.activeMeasure === i} key={'line' + lineIndex + i} measureKey={'line' + lineIndex + i} />;
             })}
         </div>
     })
 
     return <div className="simple-border">
-        <h3>Chart</h3>
+        <h3>{props.songTitle}</h3>
+        <h3>{props.timeSignature}</h3>
         <div className="chart-wrapper">
             {buildChartLines()}
         </div>

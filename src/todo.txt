@@ -11,12 +11,6 @@
 - add logic to handle when an arpeggio has notes that jump to another octave
     - keep all the notes in the same octave
 
-- figure out how to support multiple chords/measure in the editor
-    - right now it evenly divides up the measure with the chords
-    1. display a grid for the 1-4 chords/measure
-        - this one feels most like a fakebook
-        - use the beat value, but prepopulate the grid with the beat number as they add chords
-
 - update playback to highlight which note is getting played in arpeggio feature
 - refactor player so that other time signatures are possible
 

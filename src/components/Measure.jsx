@@ -6,17 +6,17 @@ export default (props) => {
         var notes = getArpeggioNotes(chord.note, chord.chordType)
 
         return <div className='arpeggio-display'>
-            {notes.map((note) => {
-                return <span className='arpeggio-note'>{getSimpleNoteName(note)}</span>
+            {notes.map((note, i) => {
+                return <span className='arpeggio-note' key={i}>{getSimpleNoteName(note)}</span>
             })}
         </div>;
     }
 
     const getChordsMarkup = () => {
-        return props.measure.chords.map((chord) => {
+        return props.measure.chords.map((chord, i) => {
             var displayWidth = chord.beats/props.beatsPerMeasure * 100 + '%';
 
-            return <div className={"chord-display"} style={{'width': displayWidth}}>
+            return <div className={"chord-display"} style={{'width': displayWidth}} key={i}>
             <span>{getSimpleNoteName(chord.note)}</span>
             <span>{chord.chordType}</span>
 
@@ -46,11 +46,26 @@ export default (props) => {
         }
     }
 
-    return <div className={"measure simple-border" + getActiveClass()}>
+    const getStartEndBar = () => {
+        if (props.measure.isStart) {
+            return <div className="repeat-bar-container start">
+            <div className="repeat-bar"></div><div className="repeat-bar little"></div>
+        </div>
+        }
+
+        if (props.measure.isEnd) {
+            return <div className="repeat-bar-container end">
+                <div className="repeat-bar little"></div><div className="repeat-bar end"></div>
+            </div>
+        }
+    }
+
+    return <div className={"measure measure-border" + getActiveClass()} key={props.measureKey}>
         {getRepeatBar()}
-        <button className='app-button delete-button delete-measure-button' onClick={() => props.deleteMeasure(props.index)}>X</button>
+        {/* <button className='app-button delete-button delete-measure-button' onClick={() => props.deleteMeasure(props.index)}>X</button> */}
         <div className="measure-chords-wrapper">
             {getChordsMarkup()}
         </div>
+        {getStartEndBar()}
     </div>
 }

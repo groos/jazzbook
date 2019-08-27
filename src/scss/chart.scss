@@ -9,6 +9,7 @@
 
     .measure {
         flex: 1;
+        max-width: 23%;
         position: relative;
 
         &.active-measure {
@@ -30,6 +31,21 @@
 
         .chord-detail-wrapper {
             display: none;
+        }
+
+        &.measure-border {
+            border: 3px solid purple;
+            border-left: none;
+            &:first-of-type {
+                border-left: 3px solid purple;
+            }
+
+            padding: 10px;
+            margin: 10px 0 10px 0;
+        
+            &:hover {
+                border-color: black;
+            }
         }
     }
 }
@@ -64,7 +80,7 @@
         display: inline-block;
         text-align: center;
         overflow-wrap: break-word;
-        background-color: lightblue;
+        background-color: white;
 
         &:hover {
             .chord-detail-wrapper {
@@ -88,9 +104,9 @@
 
     .repeat-bar {
         position: absolute;
-        top: 0;
+        top: -2px;
         left: 0;
-        height: 100%;
+        height: 110%;
         width: 4%;
         background-color: black;
 
@@ -161,8 +177,8 @@
 
     .repeat-bar {
         position: absolute;
-        top: 0;
-        height: 100%;
+        top: -2px;
+        height: 110%;
         width: 4%;
         background-color: black;
 
