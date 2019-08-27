@@ -5,6 +5,7 @@ module.exports = {
             timeSignature: '4/4 medium tempo',
             author: 'Billy Strayhorn',
             source: 'The Real Book 6th edition',
+            backingTrackUrl: 'https://www.youtube.com/watch?v=msjD-ZivCEM&list=PLM2qNYazNbaoEo4czvxQnYksoBXLsWHXn&index=31&t=0s',
             lines: [
                 [
                     { chords: [{ note: 'C3', chordType: '6', beats: 4 }], beginRepeat: true, isStart: true },
@@ -97,6 +98,7 @@ module.exports = {
             timeSignature: '4/4 Up Tempo Swing',
             author: 'Tadd Dameron',
             source: 'Google',
+            backingTrackUrl: 'https://www.youtube.com/watch?v=1yzt0UCup0c&list=PLM2qNYazNbaoEo4czvxQnYksoBXLsWHXn&index=23&t=0s',
             lines: [
                 [
                     { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }], isStart: true },
