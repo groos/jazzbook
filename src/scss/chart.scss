@@ -46,6 +46,10 @@
             &:hover {
                 border-color: black;
             }
+
+            @media(max-width: 600px) {
+                
+            }
         }
     }
 }
@@ -74,13 +78,10 @@
 }
 
 .measure-chords-wrapper {
-    background-color: lightgrey;
-
     .chord-display {
         display: inline-block;
         text-align: center;
         overflow-wrap: break-word;
-        background-color: white;
 
         &:hover {
             .chord-detail-wrapper {
