@@ -52,19 +52,19 @@ module.exports = {
             songTitle: 'Killer Joe',
             timeSignature: '4/4',
             author: 'Benny Golson',
-            source: '',
+            source: 'Google',
             lines: [
                 [
                     { chords: [{ note: 'C3', chordType: '7', beats: 4 }], beginRepeat: true, isStart: true },
-                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'C3', chordType: 'm7', beats: 4 }] },
-                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] }
+                    { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }] }
                 ],
                 [
                     { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'C3', chordType: 'm7', beats: 4 }] },
-                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }], endRepeat: true }
+                    { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }], endRepeat: true }
                 ],
                 [
                     { chords: [{ note: 'E3', chordType: 'dim', beats: 4 }] },
@@ -80,15 +80,15 @@ module.exports = {
                 ],
                 [
                     { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'C3', chordType: 'm7', beats: 4 }] },
-                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] }
+                    { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }] }
                 ],
                 [
                     { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] },
-                    { chords: [{ note: 'C3', chordType: 'm7', beats: 4 }] },
-                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }], isEnd: true }
+                    { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }], isEnd: true }
                 ],
             ]
         }

@@ -16,7 +16,7 @@ export default (props) => {
         return props.measure.chords.map((chord, i) => {
             var displayWidth = chord.beats/props.beatsPerMeasure * 100 + '%';
 
-            return <div className={"chord-display"} style={{'width': displayWidth}} key={i}>
+            return <div className={"chord-display"} style={{'width': displayWidth}} key={i} onClick={() => props.playChord(chord)}>
             <span>{getSimpleNoteName(chord.note)}</span>
             <span>{chord.chordType}</span>
 

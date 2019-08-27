@@ -5,7 +5,7 @@ export default (props) => {
     var buildChartLines = () => props.lines.map((line, lineIndex) => {
         return <div className="chart-line" key={'line' + lineIndex}>
             {line.map((m, i) => {
-                return <Measure measure={m} beatsPerMeasure={props.beatsPerMeasure} index={i} deleteMeasure={props.deleteMeasure} activeMeasure={props.activeMeasure === i} key={'line' + lineIndex + i} measureKey={'line' + lineIndex + i} />;
+                return <Measure measure={m} beatsPerMeasure={props.beatsPerMeasure} index={i} deleteMeasure={props.deleteMeasure} activeMeasure={props.activeMeasure === i} key={'line' + lineIndex + i} measureKey={'line' + lineIndex + i} playChord={props.playChord} />;
             })}
         </div>
     })
