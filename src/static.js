@@ -2,7 +2,7 @@ module.exports = {
     songs: {
         'takeTheATrain': {
             songTitle: 'Take the A Train',
-            timeSignature: '4/4',
+            timeSignature: '4/4 medium tempo',
             author: 'Billy Strayhorn',
             source: 'The Real Book 6th edition',
             lines: [
@@ -50,7 +50,7 @@ module.exports = {
         },
         'killerJoe' : {
             songTitle: 'Killer Joe',
-            timeSignature: '4/4',
+            timeSignature: '4/4 medium tempo',
             author: 'Benny Golson',
             source: 'Google',
             lines: [
@@ -90,6 +90,38 @@ module.exports = {
                     { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
                     { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }], isEnd: true }
                 ],
+            ]
+        },
+        ladyBird: {
+            songTitle: 'Lady Bird',
+            timeSignature: '4/4 Up Tempo Swing',
+            author: 'Tadd Dameron',
+            source: 'Google',
+            lines: [
+                [
+                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }], isStart: true },
+                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
+                    { chords: [{ note: 'F3', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'Bb2', chordType: '7', beats: 4 }] }
+                ],
+                [
+                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }] },
+                    { chords: [{ note: 'Bb2', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'Eb3', chordType: '7', beats: 4 }] }
+                ],
+                [
+                    { chords: [{ note: 'Ab3', chordType: 'M7', beats: 4 }] },
+                    { chords: [{ note: 'Ab3', chordType: 'M7', beats: 4 }] },
+                    { chords: [{ note: 'A3', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'D2', chordType: '7', beats: 4 }] }
+                ],
+                [
+                    { chords: [{ note: 'D3', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'G3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }, { note: 'Eb3', chordType: 'M7', beats: 4 }] },
+                    { chords: [{ note: 'Ab2', chordType: 'M7', beats: 4 }, { note: 'Db3', chordType: 'M7', beats: 4 }], isEnd: true }
+                ]
             ]
         }
     },
