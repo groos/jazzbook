@@ -3,6 +3,7 @@ module.exports = {
         'takeTheATrain': {
             songTitle: 'Take the A Train',
             timeSignature: '4/4',
+            author: 'Billy Strayhorn',
             lines: [
                 [
                     { chords: [{ note: 'C3', chordType: '6', beats: 4 }], beginRepeat: true, isStart: true },

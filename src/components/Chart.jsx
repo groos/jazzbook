@@ -12,7 +12,8 @@ export default (props) => {
 
     return <div className="simple-border">
         <h3>{props.songTitle}</h3>
-        <h3>{props.timeSignature}</h3>
+        <span>{props.author}</span>
+        <h3>Time: {props.timeSignature}</h3>
         <div className="chart-wrapper">
             {buildChartLines()}
         </div>
