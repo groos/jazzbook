@@ -46,6 +46,50 @@ module.exports = {
                     { chords: [{ note: 'C3', chordType: 'M7', beats: 4 }], isEnd: true }
                 ]
             ]
+        },
+        'killerJoe' : {
+            songTitle: 'Killer Joe',
+            timeSignature: '4/4',
+            author: 'Benny Golson',
+            source: '',
+            lines: [
+                [
+                    { chords: [{ note: 'C3', chordType: '7', beats: 4 }], beginRepeat: true, isStart: true },
+                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] }
+                ],
+                [
+                    { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }], endRepeat: true }
+                ],
+                [
+                    { chords: [{ note: 'E3', chordType: 'dim', beats: 4 }] },
+                    { chords: [{ note: 'A3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'Eb3', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'Eb3', chordType: 'm7', beats: 2 }, { note: 'Ab3', chordType: '7b9', beats: 2 }] }
+                ],
+                [
+                    { chords: [{ note: 'A3', chordType: '7add13', beats: 4 }] },
+                    { chords: [{ note: 'Eb3', chordType: 'm7', beats: 2 }, { note: 'Ab3', chordType: '7b9', beats: 2 }] },
+                    { chords: [{ note: 'E3', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'A3', chordType: '7b9', beats: 4 }] }
+                ],
+                [
+                    { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] }
+                ],
+                [
+                    { chords: [{ note: 'C3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }] },
+                    { chords: [{ note: 'C3', chordType: 'm7', beats: 4 }] },
+                    { chords: [{ note: 'Bb3', chordType: '7', beats: 4 }], isEnd: true }
+                ],
+            ]
         }
     },
     testMeasures: [

@@ -10,18 +10,27 @@ class JazzBook extends React.Component {
         super(props);
 
         this.state = {
-            ...songs['takeTheATrain'],
+            songSlug: 'killerJoe',
+            ...songs['killerJoe'],
             ...defaultValues,
             activeMeasure: 0
         };
 
         this.appendMeasure = this.appendMeasure.bind(this);
         this.deleteMeasure = this.deleteMeasure.bind(this);
+        this.getSongPicker = this.getSongPicker.bind(this);
     }
 
     updateActiveMeasure = (measure) => {
         this.setState({
             activeMeasure: measure
+        });
+    }
+
+    changeSong = (event) => {
+        this.setState({
+            songSlug: event.currentTarget.value,
+            ...songs[event.currentTarget.value]
         });
     }
 
@@ -43,12 +52,25 @@ class JazzBook extends React.Component {
         });
     }
 
+    getSongPicker = () => {
+        let songOptions = [];
+
+        for (var slug in songs) {
+            songOptions.push(<option value={slug} key={slug}>{songs[slug].songTitle}</option>)
+        }
+
+        return <select value={this.state.songSlug} onChange={this.changeSong}>
+            {songOptions}
+            </select>
+    }
+
     render() {
         return <div className="simple-border">
             <h3>Fakebook.js</h3>
+            {this.getSongPicker()}
             <Chart {...this.state} deleteMeasure={this.deleteMeasure}/>
             {/* <Player {...this.state} updateActiveMeasure={this.updateActiveMeasure}/> */}
-            <ChartEditor {...this.state} appendMeasure={this.appendMeasure}/>
+            {/* <ChartEditor {...this.state} appendMeasure={this.appendMeasure}/> */}
         </div>;
     }
 }
