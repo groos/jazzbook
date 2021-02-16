@@ -21,3 +21,11 @@
 - add edit button to measure
 - create nice display name function for the chords
     - could include descriptions/wiki links
+
+
+
+2021:
+- lose the player feature
+- stick with just the Chart, and the editor
+- add url support so people can share links to their Charts
+- Search app store for "Chord Charts", "Easy Chart" etc, and look at the reviews where people are suggesting features.
